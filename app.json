@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Weather",
-    "slug": "Weather",
+    "slug": "WeatherDraft",
     "version": "1.0.0",
     "orientation": "default",
     "icon": "./assets/icon.png",
