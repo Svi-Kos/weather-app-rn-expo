@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as Location from "expo-location";
-import { WEATHER_API_KEY } from "@env";
+// import { WEATHER_API_KEY } from "@env";
 
 export const useGetWeather = () => {
   const [loading, setLoading] = useState(true);
@@ -8,6 +8,8 @@ export const useGetWeather = () => {
   const [weather, setWeather] = useState([]);
   const [lat, setLat] = useState([]);
   const [lon, setLon] = useState([]);
+
+  const WEATHER_API_KEY = "88b0087660bcc15933dc825c29a2681b";
 
   const fetchWeatherData = async () => {
     try {
@@ -38,7 +40,7 @@ export const useGetWeather = () => {
 
       await fetchWeatherData();
     })();
-  }, [lat, lon, weather]);
+  }, [lat, lon]);
 
   return [loading, error, weather];
 };

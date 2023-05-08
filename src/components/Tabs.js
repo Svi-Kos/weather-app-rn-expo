@@ -8,14 +8,14 @@ import City from "../screens/City";
 
 const Tab = createBottomTabNavigator();
 
-const Tabs = ({ weather }) => {
+const Tabs = ({ weather, orientation }) => {
   return (
     <Tab.Navigator
       screenOptions={{
         tabBarActiveTintColor: "#2f4f4f",
         tabBarInactiveTintColor: "grey",
-        tabBarStyle: { backgroundColor: "#00ced1" },
-        headerStyle: { backgroundColor: "#00ced1" },
+        tabBarStyle: { backgroundColor: "#E3F5FF" },
+        headerStyle: { backgroundColor: "#E3F5FF" },
         headerTitleStyle: {
           fontWeight: "bold",
           fontSize: 25,
@@ -35,7 +35,12 @@ const Tabs = ({ weather }) => {
           ),
         }}
       >
-        {() => <CurrentWeather weatherData={weather.list[0]} />}
+        {() => (
+          <CurrentWeather
+            weatherData={weather.list[0]}
+            orientation={orientation}
+          />
+        )}
       </Tab.Screen>
       <Tab.Screen
         name={"Upcoming"}
@@ -63,7 +68,7 @@ const Tabs = ({ weather }) => {
           ),
         }}
       >
-        {() => <City weatherData={weather.city} />}
+        {() => <City weatherData={weather.city} orientation={orientation} />}
       </Tab.Screen>
     </Tab.Navigator>
   );

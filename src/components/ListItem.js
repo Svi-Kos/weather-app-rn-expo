@@ -13,8 +13,9 @@ const ListItem = (props) => {
     <View style={item}>
       <Feather name={weatherType[condition]?.icon} size={50} color="#2f4f4f" />
       <View style={styles.dateTextWrapper}>
+        <Text style={date}>{moment(dt_txt).format("MMM Do")}</Text>
         <Text style={date}>{moment(dt_txt).format("dddd")}</Text>
-        <Text style={date}>{moment(dt_txt).format("h:mm:ss a")}</Text>
+        <Text style={date}>{moment(dt_txt).format("h a")}</Text>
       </View>
 
       <Text style={temp}>{`${Math.round(min)}°/${Math.round(max)}°`}</Text>
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 10,
     borderColor: "#2f4f4f",
-    backgroundColor: "#afeeee",
+    backgroundColor: "#B7E6FF",
   },
   temp: {
     color: "#2f4f4f",
