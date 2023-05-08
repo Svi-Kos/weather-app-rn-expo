@@ -10,7 +10,7 @@ import moment from "moment";
 
 import IconText from "../components/IconText";
 
-const City = ({ weatherData }) => {
+const City = ({ weatherData, orientation }) => {
   const {
     container,
     imageLayout,
@@ -32,25 +32,28 @@ const City = ({ weatherData }) => {
       >
         <Text style={{ ...cityText, fontSize: 40 }}>{name}</Text>
         <Text style={{ ...cityText, fontSize: 30 }}>{country}</Text>
-        <View style={{ ...populationWrapper, ...rowLayout }}>
-          <IconText
-            iconName={"user"}
-            iconColor={"#2f4f4f"}
-            bodyText={`Population: ${population}`}
-            bodyTextStyles={populationText}
-          />
-        </View>
+        {(orientation === 1 || orientation === 2) && (
+          <View style={{ ...populationWrapper, ...rowLayout }}>
+            <IconText
+              iconName={"user"}
+              iconColor={"white"}
+              bodyText={`Population: ${population}`}
+              bodyTextStyles={populationText}
+            />
+          </View>
+        )}
+
         <View style={{ ...riseSetWrapper, ...rowLayout }}>
           <IconText
             iconName={"sunrise"}
-            iconColor={"#00ced1"}
-            bodyText={moment(sunrise).format("h:mm:ss a")}
+            iconColor={"white"}
+            bodyText={moment(sunrise * 1000).format("h:mm a")}
             bodyTextStyles={riseSetText}
           />
           <IconText
             iconName={"sunset"}
-            iconColor={"#00ced1"}
-            bodyText={moment(sunset).format("h:mm:ss a")}
+            iconColor={"white"}
+            bodyText={moment(sunset * 1000).format("h:mm a")}
             bodyTextStyles={riseSetText}
           />
         </View>
@@ -71,7 +74,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignSelf: "center",
     fontWeight: "bold",
-    color: "#2f4f4f",
+    color: "white",
+    textShadowColor: "rgba(0, 0, 0, 1)",
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 20,
   },
   populationWrapper: {
     justifyContent: "center",
@@ -80,15 +86,21 @@ const styles = StyleSheet.create({
   populationText: {
     fontSize: 25,
     marginLeft: 7.5,
-    color: "#2f4f4f",
+    color: "white",
+    textShadowColor: "rgba(0, 0, 0, 1)",
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 20,
   },
   riseSetWrapper: {
     justifyContent: "space-around",
     marginTop: 30,
   },
   riseSetText: {
-    fontSize: 20,
-    color: "#00ced1",
+    fontSize: 25,
+    color: "white",
+    textShadowColor: "rgba(0, 0, 0, 1)",
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 20,
   },
   rowLayout: {
     flexDirection: "row",
